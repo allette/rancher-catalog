@@ -1,6 +1,7 @@
 version: '2'
 services:    
   psberlioz-review:
+    priviledged: true
     image: docker.allette.com.au/psberlioz-review:${VERSION}
     environment:
       BERLIOZ_APPDATA: /tmp/jetty/appdata
