@@ -1,3 +1,4 @@
+version: '2'
 .catalog:
   name: "PageSeeder Review Space"
   version: "0.1"
@@ -13,18 +14,19 @@
       description: "Name of the Convoy volume to be attached to the container"
       type: "string"
 
-doc:
-  scale: 1
-  start_on_create: true
-  upgrade_strategy:
-    start_first: true
-  health_check:
-    healthy_threshold: 2
-    response_timeout: 2000
-    port: 8080
-    unhealthy_threshold: 3
-    initializing_timeout: 60000
-    interval: 2000
-    strategy: recreate
-    request_line: GET "/" "HTTP/1.0"
-    reinitializing_timeout: 60000
+services:
+  doc:
+    scale: 1
+    start_on_create: true
+    upgrade_strategy:
+      start_first: true
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 8080
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      strategy: recreate
+      request_line: GET "/" "HTTP/1.0"
+      reinitializing_timeout: 60000
