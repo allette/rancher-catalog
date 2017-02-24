@@ -1,8 +1,8 @@
 version: '2'
 .catalog:
-  name: "PageSeeder Review Space"
+  name: "PageSeeder Timesheet"
   version: "0.1"
-  description: "Berlioz reviewer app for PageSeeder"
+  description: "Timesheet for PageSeeder"
   questions:
     - variable: "VERSION"
       label: "Image Version"
@@ -15,7 +15,7 @@ version: '2'
       type: "string"
 
 services:
-  psberlioz-review:
+  timesheet:
     scale: 1
     start_on_create: true
     upgrade_strategy:

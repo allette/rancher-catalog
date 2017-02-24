@@ -1,8 +1,8 @@
 version: '2'
 services:    
-  psberlioz-review:
+  psberlioz-timesheet:
     privileged: true
-    image: docker.allette.com.au/psberlioz-review:${VERSION}
+    image: docker.allette.com.au/psberlioz-timesheet:${VERSION}
     environment:
       BERLIOZ_APPDATA: /tmp/jetty/appdata
     stdin_open: true
