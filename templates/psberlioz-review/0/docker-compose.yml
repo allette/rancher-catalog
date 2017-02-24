@@ -1,14 +1,11 @@
 version: '2'
-volumes:
-  ${VOLUME_NAME}:
-    external: true
-    driver: convoy-nfs
 services:    
   psberlioz-review:
     image: docker.allette.com.au/psberlioz-review:${VERSION}
     environment:
       BERLIOZ_APPDATA: /tmp/jetty/appdata
     stdin_open: true
+    volume_driver: convoy-nfs
     volumes:
     - ${VOLUME_NAME}:/tmp/jetty/appdata
     tty: true
