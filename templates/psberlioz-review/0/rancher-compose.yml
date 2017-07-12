@@ -11,7 +11,7 @@ version: '2'
       type: "string"
     - variable: "VOLUME_NAME"
       label: "Volume Name"
-      description: "Name of the Convoy volume to be attached to the container"
+      description: "Name of the Rancher NFS volume to be attached to the container"
       type: "string"
 
 services:

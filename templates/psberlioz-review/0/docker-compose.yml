@@ -2,11 +2,11 @@ version: '2'
 services:    
   psberlioz-review:
     privileged: true
-    image: docker.allette.com.au/psberlioz-review:${VERSION}
+    image: 001408692910.dkr.ecr.ap-southeast-2.amazonaws.com/pageseeder/reviewer:${VERSION}
     environment:
       BERLIOZ_APPDATA: /tmp/jetty/appdata
     stdin_open: true
-    volume_driver: convoy-nfs
+    volume_driver: rancher-nfs
     volumes:
     - ${VOLUME_NAME}:/tmp/jetty/appdata
     tty: true
