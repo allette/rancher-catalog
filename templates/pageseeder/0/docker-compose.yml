@@ -1,0 +1,43 @@
+version: '2'
+services:
+  mysql:
+    image: mysql/mysql-server:5.7
+    container_name: psdb
+    volumes:
+      - ${MYSQL_DATA_VOLUME}:/var/lib/mysql
+    networks:
+      - psnet
+    ports:
+      - '3306:3306'
+    restart: always
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=password'
+      - 'MYSQL_DATABASE=pageseeder'
+      - 'MYSQL_USER=pageseeder'
+      - 'MYSQL_PASSWORD=pageseederDB123'
+
+  pageseeder:
+    privileged: true
+    depends_on:
+      - mysql
+    image: 001408692910.dkr.ecr.ap-southeast-2.amazonaws.com/pageseeder:${VERSION}
+    stdin_open: true
+    volume_driver: rancher-nfs
+    volumes:
+      - ${PS_CONFIG_VOLUME}:/opt/pageseeder/webapp/WEB-INF/config
+      - ${PS_STATE_VOLUME}:/opt/pageseeder/webapp/WEB-INF/state
+    tty: true
+    networks:
+      - psnet
+    restart: always
+    links:
+      - mysql:psdb
+    ports:
+    - 8080/tcp
+    - 8282/tcp
+    labels:
+      io.rancher.container.pull_image: always
+
+networks:
+  psnet:
+    driver: bridge
